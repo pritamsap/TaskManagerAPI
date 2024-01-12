@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
 
 /*CRUD operations*/
 
-
 //Registration of user
 router.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
@@ -45,7 +44,10 @@ router.post("/login", async (req, res) => {
 
         const token = jwt.sign({
             _id: user._id.toString()
-        });
+
+        }, process.env.JWT_SECRET_KEY );
+
+        res.send({ user, token, message: "Logged in successfully"});
     }
     catch (err) {
             res.status(400).send({ error: err });
