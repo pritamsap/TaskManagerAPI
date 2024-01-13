@@ -12,6 +12,7 @@ router.get("/", (req, res) => {
 
 /*CRUD operations*/
 
+
 //Registration of user
 router.post("/register", async (req, res) => {
     const { name, email, password } = req.body;
@@ -24,7 +25,6 @@ catch(err) {
     res.status(400).send({ error: err });
 }
 });
-
 
 // Login a user
 router.post("/login", async (req, res) => {
@@ -53,6 +53,13 @@ router.post("/login", async (req, res) => {
             res.status(400).send({ error: err });
     }
 });
+
+
+
+
+
+
+
 
 
 module.exports = router;
